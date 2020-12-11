@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  php:
+    container_name: php72
+    build:
+      context: ./container/php
+      dockerfile: Dockerfile
+    volumes:
+      - app_path:/var/www/app
+
+volumes:
+  app_path:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${APP_PATH}
+      o: bind
