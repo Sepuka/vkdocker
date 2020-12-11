@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - app_path:/var/www/app
+    entrypoint: "${ENTRYPOINT_PATH}"
 
 volumes:
   app_path:
