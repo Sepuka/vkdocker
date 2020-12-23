@@ -1,14 +1,15 @@
-ifndef APP_PATH
-$(error The APP_PATH variable is missing. Try to make APP_PATH=~/dev/data)
-endif
+APP_PATH ?= ~/dev/data
 
-composer:
+build:
 	@APP_PATH=$(APP_PATH) ENTRYPOINT_PATH="/usr/local/bin/composer.sh" docker-compose up --build
 
+composer:
+	@APP_PATH=$(APP_PATH) ENTRYPOINT_PATH="/usr/local/bin/composer.sh" docker-compose up
+
 tests:
-	@APP_PATH=$(APP_PATH) ENTRYPOINT_PATH="/usr/local/bin/tests.sh" docker-compose up --build
+	@APP_PATH=$(APP_PATH) ENTRYPOINT_PATH="/usr/local/bin/tests.sh" docker-compose up
 
 fetch_vendor:
-	sync -a --copy-links --delete "${FQN}/data/vendor" ~/dev/data
+	sync -a --copy-links --delete "$(FQN)/data/vendor" $(APP_PATH)
 
 all: composer
