@@ -1,5 +1,8 @@
 #!/bin/bash
 
-ln /usr/local/bin/php /usr/local/bin/php7.2
-cd /var/www/app &&
-./vendor/bin/paratest
+cd /var/www/app || exit 1
+
+case $# in
+    1) REAL_BACKTRACE=1 vendor/bin/phpunit --filter "$1" ;;
+    *) ./vendor/bin/paratest ;;
+esac

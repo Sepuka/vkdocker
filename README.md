@@ -1,7 +1,10 @@
 ###### available commands
 `make [all]` - does default action - `make composer`
+
 `make composer` - installs App dependencies into /vendor
+
 `make tests` - runs tests
+
 `make fetch_vendor` - copies prepared vendor
 
 ###### examples of usage
