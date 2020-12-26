@@ -15,4 +15,10 @@ test:
 fetch_vendor:
 	rsync -a --copy-links --delete "$(FQN)/data/vendor" $(APP_PATH)
 
+build_xdebug:
+	docker build -t php_xdebug ./container/xdebug
+
+get_xdebug:
+	docker pull sepuka/php_xdebug
+
 all: composer
