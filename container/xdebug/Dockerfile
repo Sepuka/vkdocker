@@ -7,3 +7,4 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install pcntl imap bcmath zip
 RUN docker-php-ext-enable memcached xdebug
 RUN ln /usr/local/bin/php /usr/local/bin/php7.2
+COPY docker-php-ext-xdebug.ini ${PHP_INI_DIR}/conf.d/
