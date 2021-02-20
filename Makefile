@@ -13,6 +13,9 @@ test:
 	@APP_PATH=$(APP_PATH) ENTRYPOINT_PATH="/usr/local/bin/tests.sh $(target)" docker-compose up
 
 fetch_vendor:
+ifndef FQN
+	$(error FQN is undefined)
+endif
 	rsync -a --copy-links --delete "$(FQN)/data/vendor" $(APP_PATH)
 
 build_xdebug:
